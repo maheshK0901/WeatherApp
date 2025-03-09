@@ -94,3 +94,17 @@ body{
     margin-top: -6px;
 
 }
+
+.weather{
+    display: none;
+}
+
+.error{
+    display: none;
+    color: rgb(4, 4, 4);
+    text-align: left;
+    margin-left: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+
+}
