@@ -4,17 +4,19 @@ const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-btn");
 const weatherIcon = document.getElementById("weather-icon");
 
+checkWeather("Colombo");
+
 async function checkWeather(city) {
     const response = await fetch(apiUrl + city + "&appid=" + apikey);
     if (response.status == 404) {
         document.querySelector(".error").style.display = "block";
-        document.querySelector(".weather").style.display = "none";
     }
     else {
         document.querySelector(".error").style.display = "none";
         const data = await response.json();
-
+        console.log(data);
         document.getElementById("city").innerHTML = data.name;
+        document.getElementById("weather-type").innerHTML = data.weather[0].main;
         document.getElementById("temp").innerHTML = Math.round(data.main.temp) + "°C";
         document.getElementById("humidity").innerHTML = data.main.humidity + "%";
         document.getElementById("wind").innerHTML = data.wind.speed + "Km/h";
@@ -38,12 +40,18 @@ async function checkWeather(city) {
         else{
             weatherIcon.src = "images/clear.png";
         }
-
-        document.querySelector(".weather").style.display = "block";
     }
-    
 }
+
 searchButton.addEventListener("click", ()=> {
     checkWeather(searchInput.value);
 })
+
+document.getElementById("search-input").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        document.getElementById("search-btn").click();
+        this.value="";
+    }
+});
+
 

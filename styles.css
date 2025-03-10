@@ -70,6 +70,12 @@ body{
     margin-top: -10px;
 }
 
+.weather h3{
+    color: #e7e5e5;
+    font-weight: 300;
+    margin-top: -10px;
+}
+
 .details{
     display: flex;
     align-items: center;
@@ -93,10 +99,6 @@ body{
     font-size: 28px;
     margin-top: -6px;
 
-}
-
-.weather{
-    display: none;
 }
 
 .error{
